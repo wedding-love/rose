@@ -73,10 +73,10 @@
         }
 
         /* =========================================
-           БЛОК 1: ФОТО И ИМЕНА
+           БЛОК 1: ФОТО И ИМЕНА (полный экран)
            ========================================= */
         .hero-block {
-            height: 100vh; /* полный экран */
+            height: 100vh;
             min-height: 650px;
             background: url('молодые.jpg') center/cover no-repeat;
             display: flex;
@@ -142,13 +142,13 @@
         }
 
         /* =========================================
-           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ (опущен значительно)
+           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ (опущен)
            ========================================= */
         .details-block {
             background-color: var(--dusty-rose);
             z-index: 3;
             border-radius: 60px 60px 0 0;
-            margin-top: 20px; /* больше не наезжает, блок начинается ниже */
+            margin-top: 20px;
             padding: 60px 28px 80px;
             text-align: center;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
@@ -509,22 +509,21 @@
         }
 
         /* =========================================
-           БЛОК 7: КОНТАКТЫ (растянут по бокам)
+           БЛОК 7: КОНТАКТЫ (поднят чуть выше)
            ========================================= */
         .contacts-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            padding: 60px 0 80px; /* убраны боковые паддинги */
+            padding: 60px 0 80px;
             text-align: center;
             border-radius: 60px 60px 0 0;
-            margin-top: -20px;
+            margin-top: -35px; /* увеличен отрицательный отступ — блок поднят */
             position: relative;
             z-index: 4;
             overflow: hidden;
             width: 100%;
         }
 
-        /* внутренние элементы сохраняют отступы для читаемости */
         .contacts-section > div,
         .contacts-section > p,
         .contacts-section > .contact-buttons {
@@ -536,7 +535,7 @@
             .contacts-section {
                 padding: 70px 0 90px;
                 border-radius: 80px 80px 0 0;
-                margin-top: -30px;
+                margin-top: -45px; /* поднимаем ещё чуть */
             }
             .contacts-section > div,
             .contacts-section > p,
@@ -629,7 +628,7 @@
 
 <div class="mobile-container">
     
-    <!-- БЛОК 1: ПОЛНЫЙ ЭКРАН -->
+    <!-- БЛОК 1 -->
     <section class="hero-block">
         <div class="hero-content" data-aos="fade-down" data-aos-duration="1200">
             <div class="names-wrapper">
@@ -641,7 +640,7 @@
         </p>
     </section>
 
-    <!-- БЛОК 2: ЗНАЧИТЕЛЬНО ОПУЩЕН -->
+    <!-- БЛОК 2 -->
     <section class="details-block">
         <div data-aos="fade-up" data-aos-duration="1000">
             <h2 class="greeting">Дорогие и любимые!</h2>
@@ -666,7 +665,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 3: ЛОКАЦИЯ -->
+    <!-- БЛОК 3 -->
     <section class="location-section">
         <h2 class="section-title" data-aos="fade-up">Локация</h2>
         <div data-aos="fade-up" data-aos-delay="100">
@@ -732,7 +731,7 @@
         </form>
     </section>
 
-    <!-- БЛОК 7: РАСТЯНУТ ПО БОКАМ -->
+    <!-- БЛОК 7: ПОДНЯТ -->
     <section class="contacts-section">
         <div data-aos="fade-up"><h2 class="contacts-title">Остались вопросы?</h2>
         <p class="contacts-desc">По всем организационным моментам обращайтесь к нашему координатору:</p></div>
