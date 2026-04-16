@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Приглашение на свадьбу — Екатерина и Александр</title>
+    
+    <!-- Подключаем рукописный шрифт Caveat и тонкий Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* Базовые настройки и переменные */
+        :root {
+            --dusty-rose: #b88a8f;
+            --bg-dark: #222222;
+            --bg-light: #ffffff;
+            --accent-dark-rose: #b07d84;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --font-accent: 'Playfair Display', serif;
+            --font-main: 'Montserrat', sans-serif;
+            --font-handwrite: 'Caveat', cursive; /* рукописный */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: #f5f5f5;
+            color: var(--text-light);
+            -webkit-font-smoothing: antialiased;
+            font-weight: 300; /* тонкое начертание по умолчанию */
+        }
+
+        .mobile-container {
+            max-width: 450px;
+            margin: 0 auto;
+            background-color: #fff;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0,0,0,0.15);
+        }
+
+        /* Увеличение ширины для планшетов и ноутбуков (адаптивность) */
+        @media (min-width: 768px) {
+            .mobile-container {
+                max-width: 700px;
+                border-radius: 20px;
+                margin: 20px auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .mobile-container {
+                max-width: 800px;
+            }
+        }
+
+        /* =========================================
+           БЛОК 1: ФОТО И ИМЕНА
+           ========================================= */
+        .hero-block {
+            position: relative;
+            height: 90vh;
+            min-height: 600px;
+            background: url('молодые.jpg') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 50px 20px 100px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero-block::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 40%, rgba(0,0,0,0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .names-wrapper {
+            margin-top: 20px;
+        }
+
+        .names {
+            font-family: var(--font-handwrite); /* рукописный шрифт */
+            font-size: clamp(2.5rem, 12vw, 4.5rem);
+            font-weight: 500;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            margin-top: auto;
+            position: relative;
+            z-index: 2;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            font-weight: 300;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding-bottom: 40px;
+        }
+
+        /* =========================================
+           БЛОК 2: РОДНЫЕ И ДРУЗЬЯ + КАЛЕНДАРЬ
+           ========================================= */
+        .details-block {
+            position: relative;
+            background-color: var(--dusty-rose);
+            z-index: 3;
+            border-top-left-radius: 50% 100px;
+            border-top-right-radius: 50% 100px;
+            margin-top: -80px;
+            padding: clamp(40px, 8vw, 70px) 25px 80px;
+            text-align: center;
+        }
+
+        .greeting {
+            font-family: var(--font-handwrite); /* рукописный */
+            font-size: clamp(2rem, 8vw, 3rem);
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 25px;
+        }
+
+        .intro-text {
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .calendar-section {
+            margin-top: 40px;
+        }
+
+        .month-year {
+            font-family: var(--font-accent);
+            font-size: clamp(1.3rem, 5vw, 1.8rem);
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .calendar-table {
+            width: 100%;
+            border-collapse: collapse;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .calendar-table td {
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: clamp(8px, 2vw, 12px) 5px;
+            vertical-align: middle;
+        }
+
+        .calendar-table td:first-child { border-left: none; }
+        .calendar-table td:last-child { border-right: none; }
+
+        .cal-header td {
+            font-size: clamp(0.6rem, 2vw, 0.7rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+        }
+
+        .cal-dates td {
+            font-family: var(--font-accent);
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            line-height: 1;
+        }
+
+        .main-day-col {
+            width: 45%;
+            position: relative;
+        }
+
+        .heart-doodle {
+            position: absolute;
+            width: 20px;
+            opacity: 0.8;
+        }
+        
+        .heart-left {
+            bottom: 5px;
+            left: 10px;
+            transform: rotate(-15deg);
+        }
+
+        .heart-right {
+            top: 5px;
+            right: 15px;
+            transform: rotate(15deg);
+        }
+
+        /* =========================================
+           БЛОК 3: ЛОКАЦИЯ (МИНСК)
+           ========================================= */
+        .location-section {
+            padding: clamp(40px, 8vw, 60px) 20px 80px;
+            text-align: center;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+        }
+
+        .section-title {
+            font-family: var(--font-handwrite); /* рукописный */
+            font-size: clamp(2.2rem, 8vw, 3.2rem);
+            font-weight: 500;
+            margin-bottom: 25px;
+        }
+
+        .loc-subtitle {
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            font-weight: 300;
+            margin-bottom: 10px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+        }
+
+        .place-name {
+            font-family: var(--font-accent);
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 400;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .address {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: none;
+            margin: 0 auto 20px;
+        }
+
+        .map-button {
+            display: inline-block;
+            background-color: var(--accent-dark-rose);
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 14px 35px;
+            border-radius: 40px;
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
+            font-weight: 400;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .map-button:hover {
+            background-color: transparent;
+            border-color: var(--accent-dark-rose);
+        }
+
+        /* =========================================
+           БЛОК 4: ДРЕСС-КОД
+           ========================================= */
+        .dresscode-section {
+            position: relative;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            border-top-left-radius: 50% 80px;
+            border-top-right-radius: 50% 80px;
+            margin-top: -60px;
+            padding: clamp(50px, 8vw, 70px) 25px 50px;
+            text-align: center;
+            z-index: 2;
+        }
+
+        .dresscode-title {
+            font-family: var(--font-handwrite);
+            font-size: clamp(2rem, 7vw, 2.8rem);
+            font-weight: 500;
+            line-height: 1.2;
+            color: var(--accent-dark-rose);
+            margin-bottom: 20px;
+        }
+
+        .dresscode-title span {
+            font-size: clamp(1.6rem, 6vw, 2.2rem);
+        }
+
+        .dresscode-desc {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #555;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .palette {
+            display: flex;
+            justify-content: center;
+            gap: clamp(8px, 3vw, 15px);
+            flex-wrap: wrap;
+        }
+
+        .color-swatch {
+            width: clamp(45px, 10vw, 65px);
+            height: clamp(45px, 10vw, 65px);
+            border-radius: 50%;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+
+        .color-swatch:hover {
+            transform: scale(1.05);
+        }
+
+        /* =========================================
+           БЛОК 5: ПЛАН ДНЯ (ТАЙМИНГ)
+           ========================================= */
+        .timing-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: clamp(60px, 10vw, 90px) 30px;
+            text-align: center;
+        }
+
+        .timing-list {
+            margin-top: 40px;
+            position: relative;
+            list-style: none;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .timing-item {
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .timing-time {
+            font-family: var(--font-handwrite);
+            font-size: clamp(1.8rem, 6vw, 2.4rem);
+            color: var(--accent-dark-rose);
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .timing-event {
+            font-size: clamp(0.85rem, 3vw, 1rem);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .timing-item:not(:last-child)::after {
+            content: '';
+            width: 1px;
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.2);
+            margin-top: 15px;
+        }
+
+        /* =========================================
+           БЛОК 6: АНКЕТА ГОСТЯ
+           ========================================= */
+        .survey-section {
+            background-color: #ffffff;
+            color: var(--text-dark);
+            padding: clamp(60px, 10vw, 90px) 25px;
+            border-top-left-radius: 50% 80px;
+            border-top-right-radius: 50% 80px;
+            margin-top: -50px;
+            position: relative;
+            z-index: 3;
+            text-align: center;
+        }
+
+        .form-container {
+            margin-top: 30px;
+            text-align: left;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+            font-weight: 400;
+            color: #888;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 0;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            font-family: var(--font-main);
+            font-size: clamp(0.9rem, 3vw, 1rem);
+            background: transparent;
+            outline: none;
+            transition: border-color 0.3s;
+            font-weight: 300;
+        }
+
+        .form-input:focus {
+            border-bottom-color: var(--accent-dark-rose);
+        }
+
+        .radio-item {
+            display: block;
+            margin-bottom: 10px;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            cursor: pointer;
+            font-weight: 300;
+        }
+
+        .radio-item input {
+            margin-right: 10px;
+            accent-color: var(--accent-dark-rose);
+        }
+
+        .submit-button {
+            width: 100%;
+            background-color: var(--bg-dark);
+            color: #fff;
+            border: none;
+            padding: 16px;
+            font-size: clamp(0.85rem, 3vw, 0.95rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 400;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: var(--accent-dark-rose);
+        }
+
+        /* =========================================
+           БЛОК 7: КОНТАКТЫ (ФИНАЛЬНАЯ СЕКЦИЯ)
+           ========================================= */
+        .contacts-section {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            padding: clamp(60px, 10vw, 90px) 25px 100px;
+            text-align: center;
+            border-top-left-radius: 50% 80px;
+            border-top-right-radius: 50% 80px;
+            margin-top: -60px;
+            position: relative;
+            z-index: 4;
+        }
+
+        .contacts-title {
+            font-family: var(--font-handwrite);
+            font-size: clamp(2rem, 7vw, 2.8rem);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .contacts-desc {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 35px;
+            opacity: 0.85;
+            letter-spacing: 0.5px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .organizer-info {
+            margin-bottom: 40px;
+        }
+
+        .organizer-name {
+            font-family: var(--font-handwrite);
+            font-size: clamp(1.8rem, 6vw, 2.4rem);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .organizer-label {
+            font-size: clamp(0.7rem, 2.5vw, 0.8rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-dark-rose);
+            font-weight: 300;
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-contact {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 280px;
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 2px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .btn-contact:hover {
+            background-color: var(--accent-dark-rose);
+            border-color: var(--accent-dark-rose);
+        }
+
+        .footer-note {
+            margin-top: 60px;
+            font-size: clamp(0.7rem, 2.5vw, 0.85rem);
+            opacity: 0.5;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+
+        /* Адаптивные правки для очень маленьких экранов */
+        @media (max-width: 360px) {
+            .calendar-table td {
+                padding: 8px 2px;
+            }
+            .heart-doodle {
+                width: 16px;
+            }
+        }
+
+        /* Плавное появление для всех элементов с AOS */
+        [data-aos] {
+            transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+    </style>
+</head>
+<body>
+
+<div class="mobile-container">
+    
+    <!-- БЛОК 1: ФОТО И ИМЕНА -->
+    <section class="hero-block">
+        <div class="hero-content" data-aos="fade-down" data-aos-duration="1500">
+            <div class="names-wrapper">
+                <h1 class="names">Екатерина & Александр</h1>
+            </div>
+        </div>
+        <p class="subtitle" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="300">
+            Приглашение на свадьбу
+        </p>
+    </section>
+
+    <!-- БЛОК 2: РОДНЫЕ И ДРУЗЬЯ + КАЛЕНДАРЬ -->
+    <section class="details-block">
+        <div data-aos="fade-up" data-aos-duration="1000">
+            <h2 class="greeting">Дорогие и любимые!</h2>
+            <p class="intro-text">
+                С огромной радостью и трепетом в сердце мы объявляем: мы решили соединить наши судьбы!
+            </p>
+            <p class="intro-text">
+                Для нас будет огромной честью видеть вас среди самых близких людей в этот особенный день. Давайте вместе сделаем его по-настоящему тёплым и незабываемым!
+            </p>
+        </div>
+
+        <div class="calendar-section" data-aos="zoom-in" data-aos-duration="1200" data-aos-delay="200">
+            <h3 class="month-year">Июль 2026</h3>
+            
+            <table class="calendar-table">
+                <tr class="cal-header">
+                    <td>четверг</td>
+                    <td class="main-day-col">ДЕНЬ ТОРЖЕСТВА</td>
+                    <td>суббота</td>
+                </tr>
+                <tr class="cal-dates">
+                    <td>9</td>
+                    <td class="main-day-col">
+                        <svg class="heart-doodle heart-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        10
+                        <svg class="heart-doodle heart-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                    </td>
+                    <td>11</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ЛОКАЦИЯ (МИНСК) -->
+    <section class="location-section">
+        <h2 class="section-title" data-aos="fade-up" data-aos-duration="1000">Локация</h2>
+        
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+            <p class="loc-subtitle">Церемония бракосочетания</p>
+            <h3 class="place-name">Минский городской ЗАГС</h3>
+            <p class="address">г. Минск, ул. Октябрьская, 16</p>
+        </div>
+
+        <hr class="divider" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="200">
+
+        <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <p class="loc-subtitle">Праздничный ужин</p>
+            <h3 class="place-name">Ресторан «Минская гостиная»</h3>
+            <p class="address">г. Минск, пр-т Независимости, 47</p>
+        </div>
+
+        <a href="#" class="map-button" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="400">Проложить маршрут</a>
+    </section>
+
+    <!-- БЛОК 4: ДРЕСС-КОД -->
+    <section class="dresscode-section">
+        <h2 class="dresscode-title" data-aos="fade-up" data-aos-duration="1000">
+            Дресс-код
+        </h2>
+        
+        <p class="dresscode-desc" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="150">
+            Будем благодарны, если вы поддержите элегантный и уютный стиль нашего вечера. Вдохновением пусть послужат природные оттенки летнего заката.
+        </p>
+
+        <div class="palette" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+            <div class="color-swatch" style="background-color: #4A3024;"></div>
+            <div class="color-swatch" style="background-color: #C28B5E;"></div>
+            <div class="color-swatch" style="background-color: #D4A398;"></div>
+            <div class="color-swatch" style="background-color: #8A9A7B;"></div>
+            <div class="color-swatch" style="background-color: #4A5335;"></div>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: ПЛАН ДНЯ (ТАЙМИНГ) -->
+    <section class="timing-section">
+        <h2 class="section-title" data-aos="fade-up">Расписание</h2>
+        
+        <div class="timing-list">
+            <div class="timing-item" data-aos="fade-up" data-aos-delay="100">
+                <span class="timing-time">15:30</span>
+                <span class="timing-event">Сбор гостей и welcome</span>
+            </div>
+            
+            <div class="timing-item" data-aos="fade-up" data-aos-delay="200">
+                <span class="timing-time">16:00</span>
+                <span class="timing-event">Торжественная роспись</span>
+            </div>
+            
+            <div class="timing-item" data-aos="fade-up" data-aos-delay="300">
+                <span class="timing-time">18:00</span>
+                <span class="timing-event">Праздничный банкет</span>
+            </div>
+            
+            <div class="timing-item" data-aos="fade-up" data-aos-delay="400">
+                <span class="timing-time">22:00</span>
+                <span class="timing-event">Свадебный торт и танцы</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 6: АНКЕТА ГОСТЯ -->
+    <section class="survey-section">
+        <h2 class="dresscode-title" data-aos="fade-up">
+            Подтверждение
+        </h2>
+        <p class="dresscode-desc" data-aos="fade-up">
+            Пожалуйста, дайте знать о вашем присутствии до 1 июня 2026 года
+        </p>
+
+        <form class="form-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="form-group">
+                <label class="form-label">Ваше имя и фамилия</label>
+                <input type="text" class="form-input" placeholder="Анна Ковалёва">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Сможете ли вы быть с нами?</label>
+                <label class="radio-item">
+                    <input type="radio" name="presence" value="yes"> Обязательно буду / будем
+                </label>
+                <label class="radio-item">
+                    <input type="radio" name="presence" value="no"> Не получится присутствовать
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Ваши предпочтения в напитках</label>
+                <label class="radio-item"><input type="checkbox"> Вино</label>
+                <label class="radio-item"><input type="checkbox"> Шампанское / Игристое</label>
+                <label class="radio-item"><input type="checkbox"> Крепкий алкоголь</label>
+                <label class="radio-item"><input type="checkbox"> Безалкогольные напитки</label>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Особенности питания / Аллергии</label>
+                <textarea class="form-input" rows="2" placeholder="Вегетарианство, аллергия на цитрусовые и т.д."></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">Отправить ответ</button>
+        </form>
+    </section>
+
+    <!-- БЛОК 7: КОНТАКТЫ (ФИНАЛЬНАЯ СЕКЦИЯ) -->
+    <section class="contacts-section">
+        <div data-aos="fade-up">
+            <h2 class="contacts-title">Остались вопросы?</h2>
+            <p class="contacts-desc">
+                По всем организационным моментам и пожеланиям вы всегда можете обратиться к нашему координатору:
+            </p>
+        </div>
+
+        <div class="organizer-info" data-aos="fade-up" data-aos-delay="100">
+            <span class="organizer-name">Дарья Шатилова</span>
+            <span class="organizer-label">свадебный распорядитель</span>
+        </div>
+
+        <div class="contact-buttons" data-aos="fade-up" data-aos-delay="200">
+            <a href="#" class="btn-contact">
+                <span>Telegram</span>
+            </a>
+            <a href="#" class="btn-contact">
+                <span>WhatsApp</span>
+            </a>
+            <a href="#" class="btn-contact">
+                <span>Позвонить</span>
+            </a>
+        </div>
+
+        <p class="footer-note" data-aos="fade-in" data-aos-delay="400">
+            С нетерпением ждём встречи!
+        </p>
+    </section>
+
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        offset: 30,
+        duration: 800
+    });
+</script>
+
+</body>
+</html>
