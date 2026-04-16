@@ -23,8 +23,6 @@
             --font-main: 'Montserrat', sans-serif;
             --font-handwrite: 'Caveat', cursive;
             --font-heading: 'Cormorant Garamond', serif;
-            --border-radius-card: 32px;
-            --border-radius-section: 48px 48px 0 0;
         }
 
         * {
@@ -35,7 +33,7 @@
 
         body {
             font-family: var(--font-main);
-            background: linear-gradient(145deg, #eae4df 0%, #d9cfc7 100%);
+            background: #1a1a1a;
             color: var(--text-light);
             -webkit-font-smoothing: antialiased;
             font-weight: 300;
@@ -43,7 +41,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0; /* убираем все внешние отступы */
+            padding: 0;
         }
 
         .mobile-container {
@@ -54,18 +52,12 @@
             position: relative;
             overflow: hidden;
             box-shadow: 0 30px 50px rgba(0,0,0,0.2);
-            border-radius: 0; /* убираем скругления контейнера для краёв */
+            border-radius: 0;
         }
 
         @media (min-width: 768px) {
-            body { 
-                padding: 0; 
-                background: #2a2a2a; /* для контраста на больших экранах */
-            }
             .mobile-container {
                 max-width: 720px;
-                border-radius: 0;
-                box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
             }
         }
 
@@ -151,13 +143,13 @@
         }
 
         /* =========================================
-           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ
+           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ (опущен ниже)
            ========================================= */
         .details-block {
             background-color: var(--dusty-rose);
             z-index: 3;
             border-radius: 60px 60px 0 0;
-            margin-top: -50px;
+            margin-top: -30px; /* уменьшен нахлёст — блок опущен ниже */
             padding: 60px 28px 80px;
             text-align: center;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
@@ -167,6 +159,7 @@
             .details-block {
                 padding: 70px 40px 90px;
                 border-radius: 80px 80px 0 0;
+                margin-top: -20px;
             }
         }
 
@@ -315,12 +308,6 @@
             border: 1.5px solid transparent;
             letter-spacing: 1.5px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-
-        .map-button:hover {
-            background-color: transparent;
-            border-color: var(--accent-dark-rose);
-            transform: translateY(-2px);
         }
 
         /* =========================================
@@ -522,13 +509,8 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.05);
         }
 
-        .submit-button:hover {
-            background-color: var(--accent-dark-rose);
-            transform: translateY(-2px);
-        }
-
         /* =========================================
-           БЛОК 7: КОНТАКТЫ
+           БЛОК 7: КОНТАКТЫ (исправлены края)
            ========================================= */
         .contacts-section {
             background-color: var(--bg-dark);
@@ -539,6 +521,8 @@
             margin-top: -20px;
             position: relative;
             z-index: 4;
+            /* убираем всё, что может вылезти */
+            overflow: hidden;
         }
 
         @media (min-width: 768px) {
@@ -613,12 +597,6 @@
             font-weight: 300;
         }
 
-        .btn-contact:hover {
-            background-color: var(--accent-dark-rose);
-            border-color: var(--accent-dark-rose);
-            transform: translateY(-3px);
-        }
-
         .footer-note {
             margin-top: 60px;
             font-size: clamp(0.8rem, 3vw, 0.95rem);
@@ -650,7 +628,7 @@
         </p>
     </section>
 
-    <!-- БЛОК 2 -->
+    <!-- БЛОК 2 (опущен) -->
     <section class="details-block">
         <div data-aos="fade-up" data-aos-duration="1000">
             <h2 class="greeting">Дорогие и любимые!</h2>
@@ -675,7 +653,7 @@
         </div>
     </section>
 
-    <!-- БЛОК 3: ЛОКАЦИЯ (МИНСК) -->
+    <!-- БЛОК 3: ЛОКАЦИЯ -->
     <section class="location-section">
         <h2 class="section-title" data-aos="fade-up">Локация</h2>
         <div data-aos="fade-up" data-aos-delay="100">
@@ -741,7 +719,7 @@
         </form>
     </section>
 
-    <!-- БЛОК 7 -->
+    <!-- БЛОК 7 (края исправлены) -->
     <section class="contacts-section">
         <div data-aos="fade-up"><h2 class="contacts-title">Остались вопросы?</h2>
         <p class="contacts-desc">По всем организационным моментам обращайтесь к нашему координатору:</p></div>
