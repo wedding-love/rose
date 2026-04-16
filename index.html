@@ -76,9 +76,8 @@
            БЛОК 1: ФОТО И ИМЕНА
            ========================================= */
         .hero-block {
-            height: 85vh;
-            min-height: 580px;
-            max-height: 800px;
+            height: 100vh; /* полный экран */
+            min-height: 650px;
             background: url('молодые.jpg') center/cover no-repeat;
             display: flex;
             flex-direction: column;
@@ -90,7 +89,7 @@
 
         @media (min-width: 768px) {
             .hero-block {
-                min-height: 650px;
+                min-height: 700px;
                 padding: 50px 32px 120px;
             }
         }
@@ -143,13 +142,13 @@
         }
 
         /* =========================================
-           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ (опущен ниже)
+           БЛОК 2: ПРИВЕТСТВИЕ + КАЛЕНДАРЬ (опущен значительно)
            ========================================= */
         .details-block {
             background-color: var(--dusty-rose);
             z-index: 3;
             border-radius: 60px 60px 0 0;
-            margin-top: -30px; /* уменьшен нахлёст — блок опущен ниже */
+            margin-top: 20px; /* больше не наезжает, блок начинается ниже */
             padding: 60px 28px 80px;
             text-align: center;
             box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
@@ -159,7 +158,7 @@
             .details-block {
                 padding: 70px 40px 90px;
                 border-radius: 80px 80px 0 0;
-                margin-top: -20px;
+                margin-top: 30px;
             }
         }
 
@@ -510,26 +509,40 @@
         }
 
         /* =========================================
-           БЛОК 7: КОНТАКТЫ (исправлены края)
+           БЛОК 7: КОНТАКТЫ (растянут по бокам)
            ========================================= */
         .contacts-section {
             background-color: var(--bg-dark);
             color: var(--text-light);
-            padding: 60px 28px 80px;
+            padding: 60px 0 80px; /* убраны боковые паддинги */
             text-align: center;
             border-radius: 60px 60px 0 0;
             margin-top: -20px;
             position: relative;
             z-index: 4;
-            /* убираем всё, что может вылезти */
             overflow: hidden;
+            width: 100%;
+        }
+
+        /* внутренние элементы сохраняют отступы для читаемости */
+        .contacts-section > div,
+        .contacts-section > p,
+        .contacts-section > .contact-buttons {
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
         @media (min-width: 768px) {
             .contacts-section {
-                padding: 70px 40px 90px;
+                padding: 70px 0 90px;
                 border-radius: 80px 80px 0 0;
                 margin-top: -30px;
+            }
+            .contacts-section > div,
+            .contacts-section > p,
+            .contacts-section > .contact-buttons {
+                padding-left: 30px;
+                padding-right: 30px;
             }
         }
 
@@ -616,7 +629,7 @@
 
 <div class="mobile-container">
     
-    <!-- БЛОК 1 -->
+    <!-- БЛОК 1: ПОЛНЫЙ ЭКРАН -->
     <section class="hero-block">
         <div class="hero-content" data-aos="fade-down" data-aos-duration="1200">
             <div class="names-wrapper">
@@ -628,7 +641,7 @@
         </p>
     </section>
 
-    <!-- БЛОК 2 (опущен) -->
+    <!-- БЛОК 2: ЗНАЧИТЕЛЬНО ОПУЩЕН -->
     <section class="details-block">
         <div data-aos="fade-up" data-aos-duration="1000">
             <h2 class="greeting">Дорогие и любимые!</h2>
@@ -719,7 +732,7 @@
         </form>
     </section>
 
-    <!-- БЛОК 7 (края исправлены) -->
+    <!-- БЛОК 7: РАСТЯНУТ ПО БОКАМ -->
     <section class="contacts-section">
         <div data-aos="fade-up"><h2 class="contacts-title">Остались вопросы?</h2>
         <p class="contacts-desc">По всем организационным моментам обращайтесь к нашему координатору:</p></div>
